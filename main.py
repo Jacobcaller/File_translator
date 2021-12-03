@@ -15,8 +15,9 @@ while True: #While loop for repeatability
                     progress = 0 #Variable for showing listing line that's currently being translated.
                     for line in tr_file.readlines(): #For loop that iterates over all lines in user's file.
                         progress += 1  # Adding 1 for every line that's been translated.
-                        translated.write(GoogleTranslator(source="auto", target=tr_to).translate(line) + "\n") #Writing translated lines into new file.
-                        print(f"Translating line {progress}") #Showing line that's currently being translated.
+                        translated_line = GoogleTranslator(source="auto", target=tr_to).translate(line) + "\n"
+                        translated.write(translated_line) #Writing translated lines into new file.
+                        print(f"Translating line {progress}","\nOriginal sentence:\n",line,"\nTranslation: \n",translated_line)
                 print(f"All {progress} lines were translated successfully.") #Translation completed message.
             except Exception as err: #Takes care of error caused when choosing language for translation.
                 print("Something went wrong.")
